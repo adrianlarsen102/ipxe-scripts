@@ -1,27 +1,27 @@
 #!ipxe
-isset ${server-ip} || set server-ip www.adriankoshka.xyz
+isset ${server-ip} || set server-ip 192.168.30.13
 
 :start
 #console --picture http://boot.ipxe.org/ipxe.png
 menu debian
 item --gap --             ---------------------- Net installer -----------------------------
-item --key 3 Debian9_x86 Debian 9 (3)2-bit net install
-item --key 6 Debian9_x86_64 Debian 9 (6)4-bit net install
+item --key 3 Debian12_x86 Debian 12 (3)2-bit net install
+item --key 6 Debian12_x86_64 Debian 12 (6)4-bit net install
 item --gap --             ------------------------- Options --------------------------------
 item --key g goback (G)o back to previous menu
 choose version && goto ${version} || goto start
 
-:Debian9_x86
-echo Booting Debian 9 32-bit
-kernel http://deb.debian.org/debian/dists/stretch/main/installer-i386/current/images/netboot/debian-installer/i386/linux initrd=initrd.gz
-initrd http://deb.debian.org/debian/dists/stretch/main/installer-i386/current/images/netboot/debian-installer/i386/initrd.gz
+:Debian12_x86
+echo Booting Debian 12 32-bit
+kernel http://deb.debian.org/debian/dists/bookworm/main/installer-i386/current/images/netboot/debian-installer/i386/linux initrd=initrd.gz
+initrd http://deb.debian.org/debian/dists/bookworm/main/installer-i386/current/images/netboot/debian-installer/i386/initrd.gz
 boot || imgfree
 goto start
 
-:Debian9_x86_64
-echo Booting Debian 9 64-bit
-kernel http://deb.debian.org/debian/dists/stretch/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux initrd=initrd.gz
-initrd http://deb.debian.org/debian/dists/stretch/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
+:Debian12_x86_64
+echo Booting Debian 12 64-bit
+kernel http://deb.debian.org/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux initrd=initrd.gz
+initrd http://deb.debian.org/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
 boot || imgfree
 goto start
 
