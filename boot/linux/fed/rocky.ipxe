@@ -15,8 +15,8 @@ choose version && goto ${version} || goto start
 
 :rocky-minimal
 echo "Booting Rocky Linux 9.4 Minimal"
-kernel ${mirror}/isolinux/vmlinuz ip=dhcp inst.repo=${mirror} inst.stage2=${mirror}/images/pxeboot
-initrd ${mirror}/isolinux/initrd.img
+kernel ${mirror}/images/pxeboot/vmlinuz ip=dhcp inst.repo=${mirror} inst.stage2=${mirror}/images/pxeboot
+initrd ${mirror}/images/pxeboot/initrd.img
 boot
 
 :rocky-gui
