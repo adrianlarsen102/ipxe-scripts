@@ -26,7 +26,7 @@ initrd ${mirror}/isolinux/initrd.img
 boot
 
 :goback
-chain http://${server-ip}/boot/linux/rocky.ipxe
+chain http://${server-ip}/boot/menu.ipxe
 
 :goback-start
 goto start
