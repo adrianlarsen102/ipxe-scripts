@@ -4,21 +4,17 @@ isset ${server-ip} || set server-ip 192.168.30.13
 :start
 menu RHEL
 item --gap --             -------------------------  Fedora distros: -----------------------------
-item --key c cnt (C)entOS
+item --key r roc (R)ocky
 item --key f fed (F)edora
-item --key s scl (S)cientific Linux
 item --gap --             ---------------------------- Options -----------------------------------
 item --key g goback (G)o Back to previous menu
 choose version && goto ${version} || goto start
 
-:cnt
-chain http://${server-ip}/boot/linux/fed/centos.ipxe
+:roc
+chain http://${server-ip}/boot/linux/fed/rocky.ipxe
 
 :fed
 chain http://${server-ip}/boot/linux/fed/fedora.ipxe
-
-:scl
-chain http://${server-ip}/boot/linux/fed/scientific.ipxe
 
 :goback
 chain http://${server-ip}/boot/linux.ipxe
