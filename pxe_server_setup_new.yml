@@ -22,10 +22,6 @@
         owner: www-data
         group: www-data
         mode: '0755'
-      loop:
-        - "ubuntu"
-        - "rocky"
-        - "images"
 
     - name: Copy iPXE boot files for both BIOS and UEFI
       copy:
