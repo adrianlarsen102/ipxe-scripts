@@ -1,5 +1,6 @@
 #!ipxe
-isset ${server-ip} || set server-ip www.adriankoshka.xyz
+isset ${server-ip} || set server-ip 10.0.0.78
+ 
 
 :start
 menu ubuntu
