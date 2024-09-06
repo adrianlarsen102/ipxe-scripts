@@ -2,23 +2,25 @@
 
 isset ${server-ip} || set server-ip 192.168.30.13
 
+set mirror http://mirror.cs.princeton.edu/pub/mirrors/rocky/9/BaseOS/x86_64/os
+
 :start
-menu Rocky Linux 9 Boot Menu
+menu Rocky Linux 9.4 Boot Menu
 item --gap -- -----------------------
-item rocky-minimal Rocky Linux 9 Minimal Install
-item rocky-gui Rocky Linux 9 Workstation Install
+item rocky-minimal Rocky Linux 9.4 Minimal Install
+item rocky-gui Rocky Linux 9.4 Workstation Install
 item --key g goback (G)o back to previous menu
 
 choose version && goto ${version} || goto start
 
 :rocky-minimal
-echo "Booting Rocky Linux 9 Minimal"
+echo "Booting Rocky Linux 9.4 Minimal"
 kernel ${mirror}/isolinux/vmlinuz ip=dhcp inst.repo=${mirror} inst.stage2=${mirror}/images/pxeboot
 initrd ${mirror}/isolinux/initrd.img
 boot
 
 :rocky-gui
-echo "Booting Rocky Linux 9 Workstation"
+echo "Booting Rocky Linux 9.4 Workstation"
 kernel ${mirror}/isolinux/vmlinuz ip=dhcp inst.repo=${mirror} inst.stage2=${mirror}/images/pxeboot
 initrd ${mirror}/isolinux/initrd.img
 boot
