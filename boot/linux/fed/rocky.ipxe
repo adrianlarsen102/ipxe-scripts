@@ -1,0 +1,18 @@
+#!ipxe
+
+isset ${server-ip} || set server-ip 192.168.30.13
+
+:start
+menu rcoky
+item --gap --             ------------------------- Options ----------------------------------
+item rock-64 Rocky 64-bit
+item --key g goback (G)o back to previous menu
+choose version && goto ${version} || goto start
+
+:goback
+chain http://${server-ip}/boot/linux/fed.ipxe
+
+:fed-64
+kernel https://mirror.cs.princeton.edu/pub/mirrors/rocky/9/BaseOS/x86_64/kickstart/images/pxeboot/vmlinuz initrd=initrd.img
+initrd https://mirror.cs.princeton.edu/pub/mirrors/rocky/9/BaseOS/x86_64/kickstart/images/pxeboot/initrd.img
+boot
