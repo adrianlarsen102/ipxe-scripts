@@ -4,7 +4,7 @@ isset ${server-ip} || set server-ip 192.168.30.13
 
 :start
 menu fedora
-item --gap --             ------------------------- Options ----------------------------------
+item --gap -- ----------------------- Options ----------------------------
 item fed-64 Fedora 64-bit
 item --key c kickoff (C)ustom Kickstart script
 item --key g goback (G)o back to previous menu
@@ -12,17 +12,17 @@ item --key g goback (G)o back to previous menu
 choose version && goto ${version} || goto start
 
 :kickoff
-cpuid --ext 29 && set arch x86_64 || set arch i386
+cpuid --ext 29 && set arch x86_64
 read edition
-echo -n Kickstart location :
+echo -n Kickstart location:
 read script-location
 
-kernel http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Everything/${arch}/os/images/pxeboot/vmlinuz repo=http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/EverythinG/${ARCH}/os/ initrd=initrd.img ip=dhcp ks=${script-location}
+kernel http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Everything/${arch}/os/images/pxeboot/vmlinuz repo=http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Everything/${arch}/os/ ip=dhcp ks=${script-location}
 initrd http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Everything/${arch}/os/images/pxeboot/initrd.img
 boot
 
 :fed-64
-kernel http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Everything/x86_64/os/images/pxeboot/vmlinuz repo=http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Everything/x86_64/os initrd=initrd.img ip=dhcp
+kernel http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Everything/x86_64/os/images/pxeboot/vmlinuz repo=http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Everything/x86_64/os/ ip=dhcp
 initrd http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Everything/x86_64/os/images/pxeboot/initrd.img
 boot
 
