@@ -5,7 +5,7 @@ isset ${server-ip} || set server-ip 10.0.0.78
 :start
 menu ubuntu
 item --gap --             -------------------------- Arch ----------------------------------
-item --key 6 ubuntu_x86_64 Ubuntu 16.04 x86_(6)4
+item --key 6 ubuntu_x86_64 Ubuntu 20.04 x86_(6)4
 item --gap --             ------------------------- Options --------------------------------
 item --key g goback (G)o back to previous menu
 choose version && goto ${version} || goto start
