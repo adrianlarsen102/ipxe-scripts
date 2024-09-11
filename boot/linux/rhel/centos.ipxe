@@ -1,0 +1,23 @@
+#!ipxe
+
+isset ${server-ip} || set server-ip 192.168.30.13
+
+set base http://mirror.stream.centos.org/10-stream/BaseOS/x86_64/os/
+
+:start
+menu Centos Linux 8 Boot Menu
+item --gap -- -----------------------
+item centos-64 Centos Linux 8 Install
+item --key g goback (G)o back to previous menu
+
+choose version && goto ${version} || goto start
+
+:centos-64
+echo "Booting Centos Linux 8"
+prompt -k 0x197e -t 2000 Press F12 to install CentOS... || exit
+kernel ${base}/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${base}
+initrd ${base}/images/pxeboot/initrd.img
+boot
+
+:goback
+chain http://${server-ip}/boot/menu.ipxe
