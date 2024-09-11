@@ -1,5 +1,5 @@
 #!ipxe
-isset ${server-ip} || set server-ip 10.0.0.78
+isset ${server-ip} || set server-ip 192.168.30.13
  
 
 :start
