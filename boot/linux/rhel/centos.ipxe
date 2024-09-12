@@ -2,7 +2,7 @@
 
 isset ${server-ip} || set server-ip 192.168.30.13
 
-set base http://mirror.stream.centos.org/10-stream/BaseOS/x86_64/os/
+set base http://mirror.stream.centos.org/10-stream/BaseOS/x86_64/os
 
 :start
 menu Centos Linux 8 Boot Menu
