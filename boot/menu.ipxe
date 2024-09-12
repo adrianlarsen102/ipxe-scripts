@@ -5,7 +5,7 @@ isset ${server-ip} || set server-ip 192.168.30.13
 menu iPXE boot menu
 item --gap --             ------------------------- Operating systems ------------------------------
 item --key l linux	Choose a (L)inux Distrobution
-item --key w winpe	Boot to (W)indows PE
+item --key w winpe	Boot to (W)indows 11 Installer
 item --gap --             ----------------------------- Utilities ----------------------------------
 item --key e ext	(E)xit
 item --key i san 	(i)SCI/Sanboot
