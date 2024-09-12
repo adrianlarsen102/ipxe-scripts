@@ -2,7 +2,7 @@
 
 isset ${server-ip} || set server-ip 192.168.30.13
 
-set mirror http://mirror.slu.cz/rocky/9.4/BaseOS/x86_64/os
+set base http://mirror.slu.cz/rocky/9.4/BaseOS/x86_64/os
 
 :start
 menu Rocky Linux 9.4 Boot Menu
@@ -15,18 +15,9 @@ choose version && goto ${version} || goto start
 
 :rocky-minimal
 echo "Booting Rocky Linux 9.4 Minimal"
-kernel ${mirror}/images/pxeboot/vmlinuz ip=dhcp inst.repo=${mirror} inst.stage2=${mirror}/images/pxeboot
-initrd ${mirror}/images/pxeboot/initrd.img
-boot
-
-:rocky-gui
-echo "Booting Rocky Linux 9.4 Workstation"
-kernel ${mirror}/isolinux/vmlinuz ip=dhcp inst.repo=${mirror} inst.stage2=${mirror}/images/pxeboot
-initrd ${mirror}/isolinux/initrd.img
+kernel ${base}/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${base}
+initrd ${base}/images/pxeboot/initrd.img
 boot
 
 :goback
 chain http://${server-ip}/boot/menu.ipxe
-
-:goback-start
-goto start
