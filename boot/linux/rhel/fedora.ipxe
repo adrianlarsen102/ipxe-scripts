@@ -7,13 +7,13 @@ set base http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Eve
 :start
 menu fedora
 item --gap --             ------------------------- Options ----------------------------------
-item fed-64 Fedora 64-bit
+item fed Fedora 64-bit
 item --gap --             ------------------------- Options --------------------------------
 item --key g goback (G)o back to previous menu
 
 choose version && goto ${version} || goto start
 
-
+:fed
 echo "Booting Fedora 40 64-bit"
 kernel ${base}/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${base}
 initrd ${base}/images/pxeboot/initrd.img
