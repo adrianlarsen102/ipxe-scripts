@@ -5,9 +5,9 @@ isset ${server-ip} || set server-ip 192.168.30.13
 set base http://centos.anexia.at/centos-stream/10-stream/BaseOS/x86_64/os
 
 :start
-menu Centos Linux 8 Boot Menu
+menu Centos 10 Stream Boot Menu
 item --gap -- -----------------------
-item centos-64 Centos Linux 8 Install
+item centos-64 Centos 10 Stream Install
 item --key g goback (G)o back to previous menu
 
 choose version && goto ${version} || goto start
