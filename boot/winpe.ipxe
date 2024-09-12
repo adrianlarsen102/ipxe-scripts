@@ -3,7 +3,7 @@
 # Set the server IP and location of Windows 11 installation files
 isset ${server-ip} || set server-ip 192.168.30.13
 set winpe_url http://${server-ip}/windows11/sources/boot.wim
-set wimboot_url http://${server-ip}/wimboot
+set wimboot_url http://${server-ip}/windows11/wimboot
 
 :start
 echo Starting Windows 11 installation...
