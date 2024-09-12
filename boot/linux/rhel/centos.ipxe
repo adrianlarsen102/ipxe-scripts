@@ -13,7 +13,7 @@ item --key g goback (G)o back to previous menu
 choose version && goto ${version} || goto start
 
 :centos-64
-echo "Booting Centos Linux 8"
+echo "Booting Centos Stream 10 "
 kernel ${base}/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${base}
 initrd ${base}/images/pxeboot/initrd.img
 boot
