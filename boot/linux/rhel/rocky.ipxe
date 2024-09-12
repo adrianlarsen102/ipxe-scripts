@@ -7,14 +7,13 @@ set base http://mirror.slu.cz/rocky/9.4/BaseOS/x86_64/os
 :start
 menu Rocky Linux 9.4 Boot Menu
 item --gap -- -----------------------
-item rocky-minimal Rocky Linux 9.4 Minimal Install
-item rocky-gui Rocky Linux 9.4 Workstation Install
+item rocky Rocky Linux 9.4 Install
 item --key g goback (G)o back to previous menu
 
 choose version && goto ${version} || goto start
 
-:rocky-minimal
-echo "Booting Rocky Linux 9.4 Minimal"
+:rocky
+echo "Booting Rocky Linux 9.4"
 kernel ${base}/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${base}
 initrd ${base}/images/pxeboot/initrd.img
 boot
