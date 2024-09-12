@@ -16,7 +16,7 @@ choose version && goto ${version} || goto start
 chain http://${server-ip}/boot/linux.ipxe
 
 :winpe
-chain http://${server-ip}/winpe/boot.ipxe
+chain http://${server-ip}/windows11/boot.ipxe
 
 :shell
 chain http://${server-ip}/boot/efi_shell.ipxe
