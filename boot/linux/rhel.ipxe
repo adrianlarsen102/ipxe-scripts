@@ -6,15 +6,19 @@ menu RHEL
 item --gap --             -------------------------  Fedora distros: -----------------------------
 item --key r roc (R)ocky
 item --key f fed (F)edora
+item --key c cen (C)entos
 item --gap --             ---------------------------- Options -----------------------------------
 item --key g goback (G)o Back to previous menu
 choose version && goto ${version} || goto start
 
 :roc
-chain http://${server-ip}/boot/linux/fed/rocky.ipxe
+chain http://${server-ip}/boot/linux/rhel/rocky.ipxe
 
 :fed
-chain http://${server-ip}/boot/linux/fed/fedora.ipxe
+chain http://${server-ip}/boot/linux/rhel/fedora.ipxe
+
+:cen
+chain http://${server-ip}/boot/linux/rhel/centos.ipxe
 
 :goback
 chain http://${server-ip}/boot/linux.ipxe
