@@ -14,7 +14,6 @@ choose version && goto ${version} || goto start
 
 :centos-64
 echo "Booting Centos Linux 8"
-prompt -k 0x197e -t 2000 Press F12 to install CentOS... || exit
 kernel ${base}/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${base}
 initrd ${base}/images/pxeboot/initrd.img
 boot
