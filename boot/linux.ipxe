@@ -7,7 +7,7 @@ menu Linux
 item --gap --             ------------------------- Choose a distro ------------------------------
 item --key d deb (D)ebian
 item --key b dban Dariks (B)oot and Nuke
-item --key f fed (F)edora Based
+item --key r rhe (R)ed Hat Based
 item --key o opnse (O)penSUSE
 item --key u  ubu (U)buntu
 item --gap --             ---------------------------- Options -----------------------------------
@@ -24,8 +24,8 @@ chain http://${server-ip}/boot/linux/dban.ipxe
 :opnse
 chain http://${server-ip}/boot/linux/opensuse.ipxe
 
-:fed
-chain http://${server-ip}/boot/linux/fed.ipxe
+:rhe
+chain http://${server-ip}/boot/linux/rhel.ipxe
 
 :ubu
 chain http://${server-ip}/boot/linux/ubuntu.ipxe
