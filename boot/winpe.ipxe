@@ -1,21 +1,25 @@
 #!ipxe
+
+# Set the server IP and location of Windows 11 installation files
 isset ${server-ip} || set server-ip 192.168.30.13
+set winpe_url http://${server-ip}/windows11/sources/boot.wim
+set wimboot_url http://${server-ip}/wimboot
 
 :start
-menu Windows PE
-item --gap --             ------------------------- Options --------------------------------
-item --key b boot_winpe	(B)oot
-item --key g goback (G)o back to previous menu
-choose version && goto ${version} || goto start
+echo Starting Windows 11 installation...
 
+# Load wimboot (wimboot is a small boot loader for WIM files)
+kernel ${wimboot_url}
 
-:boot_winpe
-cpuid --ext 29 && set arch amd64 || set arch x86
-kernel wimboot
-initrd ${arch}/media/Boot/BCD                     BCD
-initrd ${arch}/media/Boot/boot.sdi                boot.sdi
-initrd ${arch}/media/sources/boot.wim             boot.wim
-boot
+# Load the required files for Windows 11 installation
+initrd ${winpe_url} boot.wim
+initrd http://${server-ip}/windows11/bootmgr bootmgr
+initrd http://${server-ip}/windows11/boot/BCD BCD
+initrd http://${server-ip}/windows11/boot/boot.sdi boot.sdi
 
-:goback
-chain http://${server-ip}/boot/menu.ipxe
+# Boot into WinPE
+boot || goto failed
+
+:failed
+echo Failed to load Windows 11 installation files.
+goto start
