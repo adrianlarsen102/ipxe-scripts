@@ -8,6 +8,7 @@ set base http://mirror.cs.princeton.edu/pub/mirrors/fedora/linux/releases/40/Eve
 menu fedora
 item --gap --             ------------------------- Options ----------------------------------
 item fed-64 Fedora 64-bit
+item --gap --             ------------------------- Options --------------------------------
 item --key g goback (G)o back to previous menu
 
 choose version && goto ${version} || goto start
