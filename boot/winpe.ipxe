@@ -1,22 +1,27 @@
 #!ipxe
 
-# Set the server IP and define the Windows 11 and driver paths
+# Set the server IP and location of Windows 11 installation files
 isset ${server-ip} || set server-ip 192.168.30.13
 set winpe_url http://${server-ip}/windows11/sources/boot.wim
-set wimboot_url http://${server-ip}/wimboot
-set drivers_url http://${server-ip}/windows11/drivers/pvscsi/
+set wimboot_url http://${server-ip}/windows11/wimboot
+set drivers_url http://${server-ip}/windows11/drivers/
 
 :start
 echo Starting Windows 11 installation...
 
-# Load wimboot (to load the WIM file)
+# Load wimboot (wimboot is a small boot loader for WIM files)
 kernel ${wimboot_url}
 
 # Load the required files for Windows installation
 initrd ${winpe_url} boot.wim
 initrd http://${server-ip}/windows11/bootmgr bootmgr
-initrd http://${server-ip}/windows11/boot/bcd bcd
+initrd http://${server-ip}/windows11/boot/BCD BCD
 initrd http://${server-ip}/windows11/boot/boot.sdi boot.sdi
+
+# Optional: Load the drivers into WinPE environment (this might help load drivers earlier)
+initrd http://${server-ip}/windows11/drivers/pvscsi/pvscsi.inf drivers/pvscsi.inf
+initrd http://${server-ip}/windows11/drivers/pvscsi/pvscsi.sys drivers/pvscsi.sys
+initrd http://${server-ip}/windows11/drivers/pvscsi/pvscsi.cat drivers/pvscsi.cat
 
 # Boot into WinPE
 boot || goto failed
