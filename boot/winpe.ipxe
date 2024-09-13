@@ -15,7 +15,7 @@ kernel ${wimboot_url}
 # Load the required files for Windows installation
 initrd ${winpe_url} boot.wim
 initrd http://${server-ip}/windows11/bootmgr bootmgr
-initrd http://${server-ip}/windows11/boot/BCD BCD
+initrd http://${server-ip}/windows11/boot/bcd bcd
 initrd http://${server-ip}/windows11/boot/boot.sdi boot.sdi
 
 # Optional: Load the drivers into WinPE environment (this might help load drivers earlier)
